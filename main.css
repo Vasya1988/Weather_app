@@ -3,28 +3,42 @@
     padding: 0;
 }
 
-.weather {
-    width: 300px;
-    height: 300px;
+body {
+    /* background-color: #dde6e8; */
+}
 
+.test {
+    margin: 0 auto;
+}
+
+.weather {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 50px;
+    /* border-radius: 14px;
+    box-shadow: 2px 2px 4px 0px rgb(0 0 0 / 30%) */
 }
 
 .weather-info {
     width: 100%;
     height: 100%;
     display: flex;
-    padding: 16px;
+    padding: 6px;
     box-sizing: border-box;
-    background-color: #6ebd93;
+    background-color: #f5f5f5; /* #6ebd93 */
     border-radius: 14px;
+    box-shadow: 2px 2px 4px 0px rgb(0 0 0 / 30%)
+    /* box-shadow: inset 2px 2px 4px 0px rgb(0 0 0 / 30%) */
 }
 
 .formName {
-    margin-top: 10px;
-    background-color: #6ebd93;
+    margin-top: 4px;
+    background-color: whitesmoke;
     border-radius: 14px;
     padding: 6px;
     box-sizing: border-box;
+    box-shadow: inset 2px 2px 4px 0px rgb(0 0 0 / 30%);
 }
 
 .enterName {
@@ -48,17 +62,28 @@
     width: 180px;
 }
 
+.weather_main p {
+    font-family: system-ui;
+    color: #4a4a4a;
+}
+
+.degree-frame {
+    display: flex;
+    align-items: center;
+}
+
 .degre {
-    font-size: 6em;
+    width: 50%;
+    font-size: 3.5rem;
     color: whitesmoke;
 }
 
-.desciption {
-
+.desciption p {
+    font-size: small;
 }
 
 .feels_like, .wind {
-    font-size: 1.4em;
+    font-size: 1em;
     color: whitesmoke;
 }
 
@@ -70,15 +95,16 @@
 .name-city {
     width: 180px;
     height: 128px;
-    font-size: 2.5rem;
+    font-size: 1.05rem;
     color: whitesmoke;
-    margin-top: 14px;
+    margin-top: 6px;
+
 }
 
 .weather-picture {
-    width: 85px;
-    margin-top: 10px;
+    width: 50%;
 }
 .weather-picture img {
+    width: 50%;
     width: inherit;
 }

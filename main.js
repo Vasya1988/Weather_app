@@ -6,22 +6,26 @@ class Weather {
             degreeFeelsLike: null,
             wind: null
         }
-
          // Ключ для доступа к API
         this.myKey = '57ad26d8d8989166f0ae73503542de6d';
         // let cityName = prompt('Введи название города');
         this.lang = 'ru';
-
         this.place;
     }
     
+    // Рендерим разметку на страницу
     render = ()=>{
         return new Promise((resolve, reject)=>{
             const markup =`
                 <div class="weather">
                 <div class="weather-info">
                     <div class="weather_main">
-                        <p class="degre">${this.weatherData.degree}°</p> <!-- &#8451; -->
+                        <div class="degree-frame">
+                            <p class="degre">${this.weatherData.degree}°</p> <!-- &#8451; -->
+                            <div class="weather-picture">
+                                <img src="image/light-mode-icon.png" alt="">
+                            </div>
+                        </div>
                         <div class="desciption">
                             <p class="feels_like">Ощущается как ${this.weatherData.degreeFeelsLike}°</p>
                             <p class="wind">Ветер ${this.weatherData.wind} м/сек</p>
@@ -31,9 +35,7 @@ class Weather {
                         </div>
                     </div>
 
-                    <div class="weather-picture">
-                        <img src="image/light-mode-icon.png" alt="">
-                    </div>
+                    
 
                 </div>
 
@@ -51,7 +53,7 @@ class Weather {
 
     // Отправляем запрос на API сайта погоды
     getWeather = (city, key) => {
-        city = city || 'london';
+        city = city || 'moscow';
         key = '57ad26d8d8989166f0ae73503542de6d' || key;
         return new Promise((resolve, reject) => {
             // mode 'units="metric" - Переводит градусы по цельсию
@@ -70,6 +72,7 @@ class Weather {
         })
     }
 
+    // Забираем название города из инпута
     checkInput = () => {
         return new Promise((resolve, reject) => {
             const enterName = document.querySelector('[data-city]')
@@ -83,6 +86,7 @@ class Weather {
         })
     }
 
+    // Асинхронный запуск функций
     async run (city, elem) {
         await this.getWeather(city);
         await this.render(elem)
