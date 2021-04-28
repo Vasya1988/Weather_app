@@ -40,7 +40,7 @@ class Weather {
                 </div>
 
                 <div class="formName">
-                    <input class="enterName" data-city type="text">
+                    <input class="enterName" data-city placeholder="Введите город" type="text">
                 </div>
 
             </div>
