@@ -17,7 +17,7 @@ class Weather {
     render = ()=>{
         return new Promise((resolve, reject)=>{
             const markup =`
-                <div class="weather">
+                <div class="weather" draggable="true" >
                 <div class="weather-info">
                     <div class="weather_main">
                         <div class="degree-frame">
@@ -86,11 +86,35 @@ class Weather {
         })
     }
 
+    // Touch event
+    dragEvent = () => {
+        const dragElement = document.querySelector('.weather');
+        let offsetX,
+            offsetY;
+
+        dragElement.addEventListener('dragstart', (event)=>{
+            console.log('Offset --> ', event.offsetX, event.offsetY);
+            offsetX = event.offsetX;
+            offsetY = event.offsetY;
+        })
+
+        dragElement.addEventListener('dragend', (event)=>{
+            console.log('Page --> ', event.pageX, event.pageY);
+            console.log('Offset from END --> ', event.offsetX, event.offsetY);
+            dragElement.style.position = 'absolute';
+            dragElement.style.top = `${event.pageY - offsetY}px`;
+            dragElement.style.left = `${event.pageX - offsetX}px`;
+            console.log('Result --> ', dragElement.style.top, dragElement.style.left)
+        })
+        
+    }
+
     // Асинхронный запуск функций
     async run (city, elem) {
         await this.getWeather(city);
-        await this.render(elem)
-        await this.checkInput()
+        await this.render(elem);
+        await this.checkInput();
+        await this.dragEvent();
     }
 }
 
