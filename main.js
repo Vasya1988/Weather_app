@@ -93,18 +93,31 @@ class Weather {
             offsetY;
 
         dragElement.addEventListener('dragstart', (event)=>{
-            console.log('Offset --> ', event.offsetX, event.offsetY);
-            offsetX = event.offsetX;
-            offsetY = event.offsetY;
+
+            if (event.target.nodeName === 'IMG') {
+                event.preventDefault()
+                // console.dir(event.target);
+                // console.log(event.target);
+                // console.log(event.target.parentNode.parentNode);
+                // offsetX = dragElement.offsetX
+                // offsetY = dragElement.offsetY
+            } else {
+                offsetX = event.offsetX;
+                offsetY = event.offsetY;
+            }
+            
+
+            
         })
 
         dragElement.addEventListener('dragend', (event)=>{
-            console.log('Page --> ', event.pageX, event.pageY);
-            console.log('Offset from END --> ', event.offsetX, event.offsetY);
+
             dragElement.style.position = 'absolute';
             dragElement.style.top = `${event.pageY - offsetY}px`;
             dragElement.style.left = `${event.pageX - offsetX}px`;
-            console.log('Result --> ', dragElement.style.top, dragElement.style.left)
+
+            
+
         })
         
     }

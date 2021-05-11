@@ -9,19 +9,19 @@ body {
 
 .test {
     margin: 0 auto;
+    margin-top: 50px;
 }
 
 .weather {
     width: 150px;
     height: 150px;
     margin: 0 auto;
-    margin-top: 50px;
     /* border-radius: 14px;
     box-shadow: 2px 2px 4px 0px rgb(0 0 0 / 30%) */
 }
 
 .weather-info {
-    width: 100%;
+    width: 150px;
     height: 100%;
     display: flex;
     padding: 6px;
@@ -90,7 +90,7 @@ input::placeholder {
 }
 
 .weather_main {
-    width: 180px;
+    width: 138px;
 }
 
 .weather_main p {
@@ -99,6 +99,7 @@ input::placeholder {
 }
 
 .degree-frame {
+    width: 150px;
     display: flex;
     align-items: center;
 }
@@ -133,7 +134,7 @@ input::placeholder {
 }
 
 .weather-picture {
-    width: 50%;
+    width: 45px;
 }
 .weather-picture img {
     width: 50%;
