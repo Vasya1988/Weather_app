@@ -4,7 +4,8 @@ class Weather {
             nameCity: null,
             degree: null,
             degreeFeelsLike: null,
-            wind: null
+            wind: null,
+            icon: null
         }
          // Ключ для доступа к API
         this.myKey = '57ad26d8d8989166f0ae73503542de6d';
@@ -23,7 +24,7 @@ class Weather {
                         <div class="degree-frame">
                             <p class="degre">${this.weatherData.degree}°</p> <!-- &#8451; -->
                             <div class="weather-picture">
-                                <img src="image/light-mode-icon.png" alt="">
+                                <img src='http://openweathermap.org/img/wn/${this.weatherData.icon}@2x.png' alt="">
                             </div>
                         </div>
                         <div class="desciption">
@@ -66,6 +67,8 @@ class Weather {
                 this.weatherData.degree = Math.trunc(jsonData.main.temp);
                 this.weatherData.degreeFeelsLike = Math.trunc(jsonData.main.feels_like);
                 this.weatherData.wind = Math.trunc(jsonData.wind.speed);
+                this.weatherData.icon = jsonData.weather[0].icon;
+                console.log(jsonData.weather[0].icon)
                 // console.log(this.weatherData);
             });
             resolve(getData);
