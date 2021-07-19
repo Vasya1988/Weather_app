@@ -18,7 +18,7 @@ class Weather {
     render = ()=>{
         return new Promise((resolve, reject)=>{
             const markup =`
-                <div class="weather" draggable="true" >
+                <div class="weather" >
                 <div class="weather-info">
                     <div class="weather_main">
                         <div class="degree-frame">
@@ -89,48 +89,11 @@ class Weather {
         })
     }
 
-    // Touch event
-    dragEvent = () => {
-        const dragElement = document.querySelector('.weather');
-        let offsetX,
-            offsetY;
-
-        dragElement.addEventListener('dragstart', (event)=>{
-
-            if (event.target.nodeName === 'IMG') {
-                event.preventDefault()
-                // console.dir(event.target);
-                // console.log(event.target);
-                // console.log(event.target.parentNode.parentNode);
-                // offsetX = dragElement.offsetX
-                // offsetY = dragElement.offsetY
-            } else {
-                offsetX = event.offsetX;
-                offsetY = event.offsetY;
-            }
-            
-
-            
-        })
-
-        dragElement.addEventListener('dragend', (event)=>{
-
-            dragElement.style.position = 'absolute';
-            dragElement.style.top = `${event.pageY - offsetY}px`;
-            dragElement.style.left = `${event.pageX - offsetX}px`;
-
-            
-
-        })
-        
-    }
-
     // Асинхронный запуск функций
     async run (city, elem) {
         await this.getWeather(city);
         await this.render(elem);
         await this.checkInput();
-        await this.dragEvent();
     }
 }
 
